@@ -1,0 +1,21 @@
+tn = TimeNum();
+
+// define start/end hours in TimeNum format
+
+StartTime = 93000;
+Endtime = 93000;
+
+// these conditions are true when TimeNum of the bar equals startime/endtime
+
+StartBar = tn == StartTime;
+EndBar = tn == Endtime;
+
+// on the end bar we read the value of highest high or lowest low since the start bar
+
+myH = ValueWhen( EndBar, HighestSince( StartBar, High ) );
+myL = ValueWhen( EndBar, LowestSince( StartBar, Low ) );
+
+// display price and high / low arrays
+
+Plot( myH, "myH", colorBlue, styleThick );
+Plot( myL, "myL", colorBlue, styleThick);
